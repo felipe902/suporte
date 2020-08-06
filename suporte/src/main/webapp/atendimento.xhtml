@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f = "http://java.sun.com/jsf/facelets">
+    
+    <h:head>
+        <title>Area Atendimento</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="atendimento.css"/>
+    </h:head>
+    <h:body>
+        <p:tabMenu id="Menu">
+            <p:menuitem value="Atendimento" outcome="atendimento.xhtml" icon="pi pi-star">
+                <f:param name="i" value="0" />
+            </p:menuitem>
+            <p:menuitem value="Menu" outcome="menu.xhtml" icon="pi pi-search">
+                <f:param name="i" value="1" />
+            </p:menuitem>
+            <p:menuitem value="Perfil" outcome="perfil.xhtml" icon="pi pi-file">
+                <f:param name="i" value="2" />
+            </p:menuitem>
+        </p:tabMenu>
+
+            <h:panelGroup layout="block" id="atendimento">
+                <h1 id="h1">Atendimento ao cliente</h1>        
+                <p:graphicImage library="img" name="fotoAtendimento.jpg"/>
+                <p>A consciência da necessidade de oferecer canais de comunicação com o cliente pelo site é imprescindível para se ter sucesso no empreendimento.</p>
+                <p>O Atendimento Online garante qualidade, facilidade e agilidade no atendimento aos clientes, parceiros e fornecedores. O relacionamento com a empresa passa a ser feito em tempo real, permitindo um acompanhamento de toda a negociação e pós-venda.</p>
+                <p>Com o uso da ferramenta os negócios passam a ser fechados de uma forma mais clara e objetiva, aumentando a sensação de segurança na compra e a satisfação do cliente. O sistema de chat pode ser um ponto central de contato para receber solicitações e reclamações de seus clientes.</p>
+                <p:linkButton value="Solicitar Atendimento" outcome="solicitacao.xhtml"/>
+                <p:graphicImage id="foto" library="img" name="foto_down.jpg"/>
+            </h:panelGroup>  
+    </h:body>
+</html>
+
+

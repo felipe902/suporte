@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Solicitação</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="login.css" />
+    </h:head>
+    <h:body>
+        <h:panelGrid id="panel" >                          
+            <h:form id="solicitacoes">
+                <h:panelGroup layout="block" styleClass="container" >
+                    <h:panelGroup layout="block" styleClass="contente"> 
+                        <h:panelGroup layout="block" id="solicitacao">
+                            <h1>Solicitação</h1>
+                            <h4 id="h4">Para obter o suporte preencha os campos abaixo</h4>      
+                            <h3>Nome</h3>
+                            <span class="ui-float-label">
+                                <p:inputText value="#{solicitacaoController.solicitacao.nome}"/>
+                            </span>
+                            <h3>E-mail</h3>
+                            <span class="ui-float-label">
+                                <p:inputText value="#{solicitacaoController.solicitacao.email}"/>
+                            </span>
+                            <h3>Descreva o problema</h3>
+                            <p:inputTextarea value="#{solicitacaoController.solicitacao.descricao}"/>
+                            <br/>
+                            <p:commandButton value="Enviar" action="#{solicitacaoController.solicitar()}" update="solicitacoes"/>
+                            <p:dataTable var="solicitacao" value="#{solicitacaoController.solicitacoes}">
+                                <p:column headerText="Número">
+                                    <h:outputText value="#{solicitacao.numero}"/>
+                                </p:column>
+                                <p:column headerText="Solicitante">
+                                    <h:outputText value="#{solicitacao.nome}"/>
+                                </p:column>
+                                <p:column headerText="Descrição">
+                                    <h:outputText value="#{solicitacao.descricao}"/>
+                                </p:column>
+                                <p:column headerText="Data Abertura">
+                                    <h:outputText value="#{solicitacao.data}"/>
+                                </p:column>
+                                <p:column headerText="Status">
+                                    <h:outputText value="#{solicitacao.status}"/>
+                                </p:column>
+                                <p:column headerText="Acao">
+                                    <p:commandButton value="Pegar" rendered="#{solicitacao.status eq 'AGUARDANDO'}" action="#{solicitacaoController.pegar(solicitacao)}" update="solicitacoes"/>
+                                    <p:commandButton value="Concluir" rendered="#{solicitacao.status eq 'PROCESSANDO'}" action="#{solicitacaoController.concluir(solicitacao)}" update="solicitacoes"/>
+                                </p:column>
+                            </p:dataTable>                                 
+                            <p>Deseja voltar para o Atendimento?</p>
+                            <p:linkButton id="botao" outcome="atendimento.xhtml" value="Atendimento" style="margin-right:20px;"/>
+
+                        </h:panelGroup>
+                    </h:panelGroup>                   
+                </h:panelGroup>
+            </h:form>
+        </h:panelGrid>
+    </h:body>
+</html>

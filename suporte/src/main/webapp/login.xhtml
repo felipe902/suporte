@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Teste</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="login.css"/>
+    </h:head>
+    <h:body>
+        <h:panelGroup layout="block" styleClass="container">
+            <a class="links" id="paracadastro"></a>
+            <a class="links" id="paralogin"></a>
+            <h:panelGroup layout="block" styleClass="content">      
+                <!--FORMULÁRIO DE LOGIN-->
+                <h:panelGroup layout="block" id="login">
+                    <h:form> 
+                        <h1>Login</h1> 
+                        <p> 
+                            <p:outputLabel value="Username"/>
+                            <p:inputText value="#{loginController.username}" id="email_cadastro" required="required">
+                                <p:watermark value=" Username " for="email_cadastro"/>
+                            </p:inputText>
+                        </p>
+                        <p> 
+                            <p:outputLabel value="Password"/>
+                            <p:password value="#{loginController.password}" id="password" required="required">
+                                <p:watermark value=" ********** " for="password"/>
+                            </p:password>
+                        </p>
+                        <p> 
+                            <p:selectBooleanCheckbox id="manterlogado"/>
+                            <p:outputLabel style="margin-left: 5px" value="Manter me Logado"/>
+                        </p>
+                        <p> 
+                            <p:commandButton value="Logar" action="#{loginController.logar()}" style="margin-right:20px;"/>
+                        </p>
+                        <p class="link">
+                            Ainda não tem conta?
+                            <p:link value="ir para cadastro" outcome="cadastro.xhtml"/>
+                        </p>
+                    </h:form>
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:body>
+</html>
