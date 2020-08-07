@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 /**
  *
  * @author PC
@@ -18,21 +20,18 @@ public class SolicitacaoController {
     private Solicitacao solicitacao = new Solicitacao();
     private List<Solicitacao> solicitacoes = new ArrayList<>();
     
-    private Solicitacao solicitar = new Solicitacao();
-    private List<Solicitacao> solicitars = new ArrayList<>();
-    
     public String solicitar(){
         Date data = Calendar.getInstance().getTime();
         solicitacao.setData(data);
-        solicitar.setData(data);
         solicitacao.setStatus(EnumStatusSolicitacao.AGUARDANDO);
-        solicitar.setStatus(EnumStatusSolicitacao.PROCESSANDO); 
         solicitacao.setNumero(solicitacoes.size()+1);
-        solicitar.setNumero(solicitars.size()+3);
         solicitacoes.add(solicitacao);
-        solicitars.add(solicitar);
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+         
+        context.addMessage(null, new FacesMessage("Sucesso",  "Solicitação criada com sucesso"));
+
         solicitacao = new Solicitacao();
-        solicitar = new Solicitacao();
         return "/status?faces-redirect=true";
     }
     
@@ -40,8 +39,8 @@ public class SolicitacaoController {
        solicitacao.setStatus(EnumStatusSolicitacao.PROCESSANDO);
     }
     
-    public void concluir(Solicitacao solicitav){
-       solicitav.setStatus(EnumStatusSolicitacao.FINALIZADO);
+    public void concluir(Solicitacao solicitacao){
+       solicitacao.setStatus(EnumStatusSolicitacao.FINALIZADO);
     }
     
     public Solicitacao getSolicitacao() {
@@ -59,22 +58,4 @@ public class SolicitacaoController {
     public void setSolicitacoes(List<Solicitacao> solicitacoes) {
         this.solicitacoes = solicitacoes;
     }
-
-    public Solicitacao getSolicitar() {
-        return solicitar;
-    }
-
-    public void setSolicitar(Solicitacao solicitar) {
-        this.solicitar = solicitar;
-    }
-
-    public List<Solicitacao> getSolicitars() {
-        return solicitars;
-    }
-
-    public void setSolicitars(List<Solicitacao> solicitars) {
-        this.solicitars = solicitars;
-    }
-    
-
 }

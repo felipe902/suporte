@@ -1,7 +1,5 @@
 package com.paqp.controller;
 
-import com.paqp.models.Teste2;
-import java.util.Objects;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -31,9 +29,11 @@ public class LoginController {
         this.password = password;
     }
     
-    public String logar (){
+    public String logar() {
         if (this.username.equals("felipe") && this.password.equals("123456")) {
             return "/atendimento?faces-redirect=true";
+        } else if (this.username.equals("ernanny") && this.password.equals("123456")) {
+            return "/solicitacao?faces-redirect=true";
         } else {
             return null;
         }

@@ -9,8 +9,9 @@
         <h:outputStylesheet library="css" name="login.css" />
     </h:head>
     <h:body>
-        <h:panelGrid id="panel" >                          
+        <h:panelGrid id="panel" >
             <h:form id="solicitacoes">
+                <p:growl id="growl" showDetail="true" sticky="true" />
                 <h:panelGroup layout="block" styleClass="container" >
                     <h:panelGroup layout="block" styleClass="contente"> 
                         <h:panelGroup layout="block" id="solicitacao">
@@ -28,6 +29,7 @@
                             <p:inputTextarea value="#{solicitacaoController.solicitacao.descricao}"/>
                             <br/>
                             <p:commandButton value="Enviar" action="#{solicitacaoController.solicitar()}" update="solicitacoes"/>
+                            <br/><br/>
                             <p:dataTable var="solicitacao" value="#{solicitacaoController.solicitacoes}">
                                 <p:column headerText="Número">
                                     <h:outputText value="#{solicitacao.numero}"/>
@@ -44,7 +46,7 @@
                                 <p:column headerText="Status">
                                     <h:outputText value="#{solicitacao.status}"/>
                                 </p:column>
-                                <p:column headerText="Acao">
+                                <p:column headerText="Ação" rendered="#{loginController.username eq 'ernanny'}">
                                     <p:commandButton value="Pegar" rendered="#{solicitacao.status eq 'AGUARDANDO'}" action="#{solicitacaoController.pegar(solicitacao)}" update="solicitacoes"/>
                                     <p:commandButton value="Concluir" rendered="#{solicitacao.status eq 'PROCESSANDO'}" action="#{solicitacaoController.concluir(solicitacao)}" update="solicitacoes"/>
                                 </p:column>

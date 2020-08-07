@@ -12,15 +12,9 @@
     </h:head>
     <h:body>
         <p:tabMenu id="Menu">
-            <p:menuitem value="Atendimento" outcome="atendimento.xhtml" icon="pi pi-star">
-                <f:param name="i" value="0" />
-            </p:menuitem>
-            <p:menuitem value="Menu" outcome="menu.xhtml" icon="pi pi-search">
-                <f:param name="i" value="1" />
-            </p:menuitem>
-            <p:menuitem value="Perfil" outcome="perfil.xhtml" icon="pi pi-file">
-                <f:param name="i" value="2" />
-            </p:menuitem>
+            <p:menuitem value="Atendimento" outcome="atendimento.xhtml"/>
+            <p:menuitem value="Menu" outcome="menu.xhtml"/>
+            <p:menuitem value="Perfil" outcome="perfil.xhtml"/>
         </p:tabMenu>
 
             <h:panelGroup layout="block" id="atendimento">
@@ -32,6 +26,7 @@
                 <p:linkButton value="Solicitar Atendimento" outcome="solicitacao.xhtml"/>
                 <p:graphicImage id="foto" library="img" name="foto_down.jpg"/>
             </h:panelGroup>  
+        
     </h:body>
 </html>
 
